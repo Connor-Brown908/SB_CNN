@@ -1,0 +1,60 @@
+data:
+  promoter_seq_len: 150
+  rbs_seq_len: 96
+
+  promoter_clean:
+    min_len: 20
+    max_len: 400
+    value_min: 0.0
+    value_max: null
+    label_z_clip: 6.0
+    max_rel_sd: null
+
+  rbs_clean:
+    min_len: 96
+    max_len: 96
+    value_min: 1.0
+    value_max: 100.0
+    label_z_clip: 0.0      
+    max_rel_sd: null
+
+  promoter_kmer: 8
+  rbs_kmer: 12
+  similarity_threshold: 0.5
+  bucket_cap: 200
+  val_fraction: 0.15
+  test_fraction: 0.15
+  split_seed: 1234
+
+model:
+  channels: [64, 64]
+  kernel_sizes: [12, 8]
+  pool_size: 16
+  mlp_hidden: 128
+  dropout: 0.3
+  heteroscedastic: true
+
+optim:
+  epochs: 40
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.00001
+  grad_clip: 5.0
+  early_stop_patience: 8
+  num_workers: 0
+  seed: 0
+
+monitor:
+  backend: wandb
+  wandb_mode: offline
+  project: seqparam
+  run_name: null
+  log_dir: runs
+
+db:
+  url: postgresql+psycopg2://seqparam:seqparam@localhost:5432/seqparam
+  echo: false
+  insert_chunk: 5000
+
+paths:
+  artifacts: artifacts
