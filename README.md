@@ -1,4 +1,4 @@
-# SynBioModel
+# SB CNN
 
 Stage-1 CNNs that predict *E. coli* circuit parameters from DNA sequence, with
 calibrated uncertainty, for a downstream mechanistic (ODE/SSA) circuit simulator:
