@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Data — never commit the raw supplementary files or derived artifacts
+data_raw/
+data/
+artifacts/
+runs/
+wandb/
+*.zip
+*.xls
+*.xlsx
+*.csv
+
+# Env / tooling
+.env
+.pytest_cache/
+.coverage
+htmlcov/
