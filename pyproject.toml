@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seqparam"
+version = "0.1.0"
+description = "Stage-1 CNN: predict synthetic-biology circuit parameters from DNA sequence"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "openpyxl>=3.1",
+    "xlrd>=2.0",
+    "pydantic>=2.5",
+    "pyyaml>=6.0",
+    "sqlalchemy>=2.0",
+    "psycopg2-binary>=2.9",
+    "wandb>=0.16",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-postgresql>=5.0",
+]
+
+[project.scripts]
+seqparam = "seqparam.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
